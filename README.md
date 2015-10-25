@@ -1,4 +1,5 @@
 # ECSE 429 Software Validation Project, Fall 2015
+# GROUP 14
 TouchCORE tool project (subset) for the ECSE429 Software Validation, Fall 2015 course at McGill University.
 TouchCORE is a multitouch-enabled tool for concern-oriented software design modeling aimed at developing scalable and reusable software design concern models. The version provided here only contains functionality to create *Reusable Aspect Models* (RAM), or *Aspects*, which is a multi-view modelling notation supporting structure and behaviour using class, sequence and state diagrams (here called structure, message and state views). The goal of this project is to test parts of the message views. The full version can be found at [touchcore.cs.mcgill.ca](http://touchcore.cs.mcgill.ca).
 
