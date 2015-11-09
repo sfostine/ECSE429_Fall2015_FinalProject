@@ -28,12 +28,13 @@ import ca.mcgill.sel.ram.validator.ValidationRulesParser;
  * @author mschoettle
  */
 public final class TouchCORE {
-
+    
     /**
      * Creates a new instance of TouchCORE.
      */
     private TouchCORE() {
-
+            int a = 10;
+            System.out.println(a);
     }
 
     /**
