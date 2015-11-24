@@ -14,7 +14,7 @@ public final class RegexTest {
     /**
      * @param args
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args) { 
         
         matchesOpertion("+ String foo()");
         matchesOpertion("+ String oper(int num, String s)");

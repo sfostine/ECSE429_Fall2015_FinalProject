@@ -558,7 +558,6 @@ public class MessageViewHandler extends AbstractViewHandler implements IMessageV
                 }
             }
         }
-
         return index;
     }
 

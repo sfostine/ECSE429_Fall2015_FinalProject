@@ -468,7 +468,7 @@ public class DisplayAspectScene extends RamAbstractScene<IDisplaySceneHandler>
      * @param messageView the {@link AbstractMessageView} to display its {@link MessageViewView} for
      */
     public void showMessageView(AbstractMessageView messageView) {
-        MessageViewView view = messageViewViews.get(messageView);
+        MessageViewView view = messageViewViews.get(messageView); 
 
         if (view == null) {
             ContainerMapImpl layout = EMFModelUtil.getEntryFromMap(aspect.getLayout().getContainers(), messageView);

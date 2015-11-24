@@ -2,6 +2,7 @@ package ca.mcgill.sel.ram.ui.views.message.handler.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.mt4j.input.inputProcessors.componentProcessors.tapAndHoldProcessor.TapAndHoldEvent;
+import org.mt4j.sceneManagement.SceneChangeEvent;
 
 import ca.mcgill.sel.ram.FragmentContainer;
 import ca.mcgill.sel.ram.Gate;
@@ -18,6 +19,7 @@ import ca.mcgill.sel.ram.ui.components.RamImageComponent;
 import ca.mcgill.sel.ram.ui.components.RamSelectorComponent;
 import ca.mcgill.sel.ram.ui.components.listeners.AbstractDefaultRamSelectorListener;
 import ca.mcgill.sel.ram.ui.events.listeners.ITapAndHoldListener;
+import ca.mcgill.sel.ram.ui.scenes.DisplayAspectScene;
 import ca.mcgill.sel.ram.ui.utils.Colors;
 import ca.mcgill.sel.ram.ui.utils.Icons;
 import ca.mcgill.sel.ram.ui.views.OptionSelectorView;
@@ -54,11 +56,15 @@ public class MessageHandler extends BaseHandler implements ITapAndHoldListener {
             return icon;
         }
         
+        
+        
+     
     }
     
     @Override
     public boolean processTapAndHoldEvent(TapAndHoldEvent tapAndHoldEvent) {
         if (tapAndHoldEvent.isHoldComplete()) {
+           
             final MessageCallView messageCallView = (MessageCallView) tapAndHoldEvent.getTarget();
             if (shouldProcessTapAndHold(messageCallView.getMessage())) {
                 final MessageOccurrenceSpecification sendEvent =
@@ -113,9 +119,7 @@ public class MessageHandler extends BaseHandler implements ITapAndHoldListener {
                     && message.getReceiveEvent().eClass() == RamPackage.Literals.GATE)) {
                 return true;
             }
-        }
-        
+        } 
         return false;
-    }
-    
+    } 
 }
