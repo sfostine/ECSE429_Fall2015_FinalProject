@@ -181,7 +181,7 @@ public enum MessageSort implements Enumerator {
     public static MessageSort get(int value) {
         switch (value) {
             case SYNCH_CALL_VALUE: return SYNCH_CALL;
-            case CREATE_MESSAGE_VALUE: return CREATE_MESSAGE;
+            case CREATE_MESSAGE_VALUE: return CREATE_MESSAGE; 
             case DELETE_MESSAGE_VALUE: return DELETE_MESSAGE;
             case REPLY_VALUE: return REPLY;
         }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:COREConcern xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://cs.mcgill.ca/sel/core/2.0" xmlns:ram="http://cs.mcgill.ca/sel/ram/3.0" xmi:id="_D8WvMJJUEeWZNKuAJcwZeQ" name="Test">
+  <models xsi:type="core:COREFeatureModel" href="#_D8ggMJJUEeWZNKuAJcwZeQ"/>
+  <models xsi:type="ram:Aspect" href="Testing.ram#_nRUmwJJWEeWZNKuAJcwZeQ"/>
+  <featureModel xmi:id="_D8ggMJJUEeWZNKuAJcwZeQ" coreConcern="_D8WvMJJUEeWZNKuAJcwZeQ" root="_D8ggMZJUEeWZNKuAJcwZeQ">
+    <features xmi:id="_D8ggMZJUEeWZNKuAJcwZeQ" name="Test"/>
+  </featureModel>
+</core:COREConcern>

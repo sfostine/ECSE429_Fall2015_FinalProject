@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<core:COREConcern xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:core="http://cs.mcgill.ca/sel/core/2.0" xmi:id="_Xpl7wJAYEeWBh6mbGexczg" name="Models" models="_Xpmi0JAYEeWBh6mbGexczg">
+  <featureModel xmi:id="_Xpmi0JAYEeWBh6mbGexczg" coreConcern="_Xpl7wJAYEeWBh6mbGexczg" root="_Xpmi0ZAYEeWBh6mbGexczg">
+    <features xmi:id="_Xpmi0ZAYEeWBh6mbGexczg" name="Models"/>
+  </featureModel>
+</core:COREConcern>
