@@ -2,6 +2,7 @@
 <core:COREConcern xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://cs.mcgill.ca/sel/core/2.0" xmlns:ram="http://cs.mcgill.ca/sel/ram/3.0" xmi:id="_kQ-_4JIiEeWWToW40EHFEw" name="Concern1">
   <models xsi:type="core:COREFeatureModel" href="#_kQ-_4ZIiEeWWToW40EHFEw"/>
   <models xsi:type="ram:Aspect" href="aspect1.ram#_5ibkQJIiEeWWToW40EHFEw"/>
+  <models xsi:type="ram:Aspect" href="aspect2.ram#_ZVwawJPKEeWu0NneVTzlHQ"/>
   <featureModel xmi:id="_kQ-_4ZIiEeWWToW40EHFEw" coreConcern="_kQ-_4JIiEeWWToW40EHFEw" root="_kQ-_4pIiEeWWToW40EHFEw">
     <features xmi:id="_kQ-_4pIiEeWWToW40EHFEw" name="Concern1"/>
   </featureModel>

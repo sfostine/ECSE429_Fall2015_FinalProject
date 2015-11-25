@@ -48,7 +48,7 @@ import ca.mcgill.sel.ram.ui.views.message.handler.impl.MessageViewHandler;
 import ca.mcgill.sel.ram.util.RamResourceFactoryImpl;
 import net.jodah.concurrentunit.Waiter;
 
-public class MessageViewHandlerTest {
+public class TestMessageViewHandler {
 
     private static Waiter waiter = new Waiter();
     private static Aspect aspect;
@@ -127,17 +127,7 @@ public class MessageViewHandlerTest {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
-        //Start the cursor, create the events and fire them so that they get added to the cursor
-        testInputCursor = new InputCursor();
-        mouseInputSource = new MouseInputSource(RamApp.getApplication());
-        
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 300, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
+        setUpMouseInputs(159, 180, 300, 180);
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
@@ -164,17 +154,8 @@ public class MessageViewHandlerTest {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
-        testInputCursor = new InputCursor();
-        mouseInputSource = new MouseInputSource(RamApp.getApplication());
+        setUpMouseInputs(159, 180, 160, 180);
         
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
-                
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -197,17 +178,8 @@ public class MessageViewHandlerTest {
     public void testProcessUnistrokeEvent3() throws TimeoutException {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
- 
-        testInputCursor = new InputCursor();
-        mouseInputSource = new MouseInputSource(RamApp.getApplication());
         
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
+        setUpMouseInputs(159, 180, 160, 180);
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
@@ -232,18 +204,7 @@ public class MessageViewHandlerTest {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
-        testInputCursor = new InputCursor();
-        mouseInputSource = new MouseInputSource(RamApp.getApplication());
-        
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 413, 400, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
+        setUpMouseInputs(159, 180, 413, 400);
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
@@ -269,18 +230,7 @@ public class MessageViewHandlerTest {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
-        testInputCursor = new InputCursor();
-        MouseInputSource mouseInputSource = new MouseInputSource(RamApp.getApplication());
-        
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
+        setUpMouseInputs(159, 180, 413, 180);
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
@@ -305,18 +255,7 @@ public class MessageViewHandlerTest {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
-        testInputCursor = new InputCursor();
-        mouseInputSource = new MouseInputSource(RamApp.getApplication());
-        
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 220, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 413, 220, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
+        setUpMouseInputs(159, 220, 413, 220);
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
@@ -342,18 +281,7 @@ public class MessageViewHandlerTest {
         aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
-        testInputCursor = new InputCursor();
-        mouseInputSource = new MouseInputSource(RamApp.getApplication());
-        
-        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent1.onFired();
-        
-        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 500, 500, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
-        mouseInputEvent2.onFired();
+        setUpMouseInputs(159, 180, 500, 500);
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
@@ -456,6 +384,19 @@ public class MessageViewHandlerTest {
         
         // Wait for UI to be updated.
         waiter.await();
+    }
+    
+    public void setUpMouseInputs(int x1, int y1, int x2, int y2) {
+        testInputCursor = new InputCursor();
+        mouseInputSource = new MouseInputSource(RamApp.getApplication());
+        
+        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
+                0, x1, y1, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        mouseInputEvent1.onFired();
+        
+        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
+                0, x2, y2, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        mouseInputEvent2.onFired();
     }
 
 //    @Test
