@@ -214,9 +214,9 @@ public class COREAspectContainer extends RamPanelListComponent<Aspect> {
             if (scene != null) {
                 if (selected == element) {
                     // Remove everything and un-select
-                    unselect((DisplayConcernEditScene) scene);
+                    unselect(scene);
                 } else {
-                    select(element, (DisplayConcernEditScene) scene);
+                    select(element, scene);
                 }
             }
         }

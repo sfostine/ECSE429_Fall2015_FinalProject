@@ -138,7 +138,7 @@ public class EnumViewHandler extends BaseViewHandler implements IEnumViewHandler
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
         RamRectangleComponent pressedButton = (RamRectangleComponent) event.getTarget();
-        RamLinkedMenu linkedMenu = (RamLinkedMenu) pressedButton.getParentOfType(RamLinkedMenu.class);
+        RamLinkedMenu linkedMenu = pressedButton.getParentOfType(RamLinkedMenu.class);
         if (linkedMenu != null) {
 
             EnumView enumView = (EnumView) linkedMenu.getLinkedView();

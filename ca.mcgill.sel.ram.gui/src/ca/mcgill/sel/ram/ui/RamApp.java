@@ -22,6 +22,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 import org.eclipse.emf.ecore.EObject;
 import org.mt4j.MTApplication;
@@ -490,7 +491,7 @@ public class RamApp extends MTApplication {
         });
 
         // By default, the window will hide on close.
-        ((JFrame) frame).setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        ((JFrame) frame).setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         // Load app icons. Do it here, because we need the frame.
         loadAppIcons();

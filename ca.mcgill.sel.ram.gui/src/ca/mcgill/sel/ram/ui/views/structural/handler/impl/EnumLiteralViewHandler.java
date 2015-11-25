@@ -34,7 +34,7 @@ public class EnumLiteralViewHandler extends BaseHandler implements IEnumLiteralV
         String actionCommand = event.getActionCommand();
 
         RamRectangleComponent pressedButton = (RamRectangleComponent) event.getTarget();
-        RamLinkedMenu linkedMenu = (RamLinkedMenu) pressedButton.getParentOfType(RamLinkedMenu.class);
+        RamLinkedMenu linkedMenu = pressedButton.getParentOfType(RamLinkedMenu.class);
         if (linkedMenu != null) {
 
             EnumLiteralView literalView = (EnumLiteralView) linkedMenu.getLinkedView();

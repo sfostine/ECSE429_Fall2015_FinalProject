@@ -2,8 +2,6 @@ package ca.mcgill.sel.ram.ui.views.message.handler.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.mt4j.input.inputProcessors.componentProcessors.tapAndHoldProcessor.TapAndHoldEvent;
-import org.mt4j.sceneManagement.SceneChangeEvent;
-
 import ca.mcgill.sel.ram.FragmentContainer;
 import ca.mcgill.sel.ram.Gate;
 import ca.mcgill.sel.ram.Interaction;
@@ -19,7 +17,6 @@ import ca.mcgill.sel.ram.ui.components.RamImageComponent;
 import ca.mcgill.sel.ram.ui.components.RamSelectorComponent;
 import ca.mcgill.sel.ram.ui.components.listeners.AbstractDefaultRamSelectorListener;
 import ca.mcgill.sel.ram.ui.events.listeners.ITapAndHoldListener;
-import ca.mcgill.sel.ram.ui.scenes.DisplayAspectScene;
 import ca.mcgill.sel.ram.ui.utils.Colors;
 import ca.mcgill.sel.ram.ui.utils.Icons;
 import ca.mcgill.sel.ram.ui.views.OptionSelectorView;
@@ -40,14 +37,15 @@ public class MessageHandler extends BaseHandler implements ITapAndHoldListener {
     private enum MessageOptions implements Iconified {
         DELETE(new RamImageComponent(Icons.ICON_DELETE, Colors.ICON_DELETE_COLOR));
         
-        private RamImageComponent icon;
         
+        private RamImageComponent icon; 
+         
         /**
          * Creates a new option literal with the given icon.
          * 
          * @param icon the icon to use for this option
          */
-        MessageOptions(RamImageComponent icon) {
+        MessageOptions(RamImageComponent icon) { 
             this.icon = icon;
         }
         
@@ -64,19 +62,17 @@ public class MessageHandler extends BaseHandler implements ITapAndHoldListener {
     @Override
     public boolean processTapAndHoldEvent(TapAndHoldEvent tapAndHoldEvent) {
         if (tapAndHoldEvent.isHoldComplete()) {
-           
             final MessageCallView messageCallView = (MessageCallView) tapAndHoldEvent.getTarget();
-            if (shouldProcessTapAndHold(messageCallView.getMessage())) {
+            if (shouldProcessTapAndHold(messageCallView.getMessage())) {    
                 final MessageOccurrenceSpecification sendEvent =
                         (MessageOccurrenceSpecification) messageCallView.getFromEnd().getModel();
                 final FragmentContainer container = (FragmentContainer) sendEvent.eContainer();
                 final Interaction interaction = sendEvent.getMessage().getInteraction();
-                
-                OptionSelectorView<MessageOptions> selector =
-                        new OptionSelectorView<MessageOptions>(MessageOptions.values());
-                
-                RamApp.getActiveAspectScene().addComponent(selector, tapAndHoldEvent.getLocationOnScreen());
-                
+                OptionSelectorView<MessageOptions> selector = new OptionSelectorView<MessageOptions>(
+                                MessageOptions.values());
+                RamApp.getActiveAspectScene().addComponent(
+                        selector, 
+                        tapAndHoldEvent.getLocationOnScreen());
                 selector.registerListener(new AbstractDefaultRamSelectorListener<MessageOptions>() {
                     @Override
                     public void elementSelected(RamSelectorComponent<MessageOptions> selector, MessageOptions element) {
@@ -87,7 +83,7 @@ public class MessageHandler extends BaseHandler implements ITapAndHoldListener {
                                     MessageViewController controller =
                                             ControllerFactory.INSTANCE.getMessageViewController();
                                     controller.removeMessages(interaction, container, sendEvent);
-                                    break;
+                                    break; 
                                 }
                         }
                     }

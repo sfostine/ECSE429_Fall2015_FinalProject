@@ -82,8 +82,8 @@ public class MouseWheelProcessor extends AbstractComponentProcessor {
                 }
 
                 MTCanvas canvas = application.getCurrentScene().getCanvas();
-                final IMTComponent3D component = canvas.getComponentAt((float) x, (float) y);
-                final Vector3D scalingPoint = new Vector3D((float) x, (float) y);
+                final IMTComponent3D component = canvas.getComponentAt(x, y);
+                final Vector3D scalingPoint = new Vector3D(x, y);
                 final WheelEvent mouseWheelEvent =
                         new WheelEvent(MouseWheelProcessor.this, MTGestureEvent.GESTURE_UPDATED,
                                 component, scale, scalingPoint);

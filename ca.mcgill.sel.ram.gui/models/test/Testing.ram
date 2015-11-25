@@ -3,7 +3,7 @@
   <coreConcern href="Test.core#_D8WvMJJUEeWZNKuAJcwZeQ"/>
   <structuralView xmi:id="_nRUmwZJWEeWZNKuAJcwZeQ">
     <classes xsi:type="ram:Class" xmi:id="_nRUmwpJWEeWZNKuAJcwZeQ" name="User" visibility="public">
-      <operations xmi:id="_nRUmw5JWEeWZNKuAJcwZeQ" name="makeLostsOfMoney" visibility="public" returnType="_nRUmy5JWEeWZNKuAJcwZeQ"/>
+      <operations xmi:id="_nRUmw5JWEeWZNKuAJcwZeQ" name="makeLotsOfMoney" visibility="public" returnType="_nRUmy5JWEeWZNKuAJcwZeQ"/>
       <associationEnds xmi:id="_wl8MwJJWEeWZNKuAJcwZeQ" name="myAccounts" lowerBound="1" upperBound="-1" assoc="_wl8z0JJWEeWZNKuAJcwZeQ"/>
     </classes>
     <classes xsi:type="ram:Class" xmi:id="_nRUmxJJWEeWZNKuAJcwZeQ" name="Account" visibility="public">

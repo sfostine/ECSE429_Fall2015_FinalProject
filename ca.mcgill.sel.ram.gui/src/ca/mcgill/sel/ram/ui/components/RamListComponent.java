@@ -151,7 +151,7 @@ public class RamListComponent<T> extends RamRectangleComponent implements IHandl
                 return false;
             }
 
-            if (dragEvent.getId() == DragEvent.GESTURE_ENDED) {
+            if (dragEvent.getId() == MTGestureEvent.GESTURE_ENDED) {
                 needToBounce = true;
             }
 

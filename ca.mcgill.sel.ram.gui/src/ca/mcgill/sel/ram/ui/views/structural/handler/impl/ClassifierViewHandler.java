@@ -40,7 +40,7 @@ public abstract class ClassifierViewHandler extends BaseViewHandler implements I
     public void actionPerformed(ActionEvent event) {
         String actionCommand = event.getActionCommand();
         RamRectangleComponent pressedButton = (RamRectangleComponent) event.getTarget();
-        RamLinkedMenu linkedMenu = (RamLinkedMenu) pressedButton.getParentOfType(RamLinkedMenu.class);
+        RamLinkedMenu linkedMenu = pressedButton.getParentOfType(RamLinkedMenu.class);
         if (linkedMenu != null) {
 
             ClassifierView<?> clazz = (ClassifierView<?>) linkedMenu.getLinkedView();

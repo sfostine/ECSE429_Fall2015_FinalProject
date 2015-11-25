@@ -66,8 +66,8 @@ public class DefaultRelationshipView<T extends EObject> extends RelationshipView
      */
     private void updateRelationshipEnd(RamEnd<?, ?> end) {
 
-        RamRectangleComponent oppositeView = (RamRectangleComponent) end.getOpposite().getComponentView();
-        RamRectangleComponent view = (RamRectangleComponent) end.getComponentView();
+        RamRectangleComponent oppositeView = end.getOpposite().getComponentView();
+        RamRectangleComponent view = end.getComponentView();
 
         float width = view.getWidthXY(TransformSpace.GLOBAL);
         float height = view.getHeightXY(TransformSpace.GLOBAL);

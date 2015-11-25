@@ -39,7 +39,7 @@ public class ParameterViewHandler extends BaseHandler implements IParameterViewH
     public void actionPerformed(ActionEvent event) {
         String command = event.getActionCommand();
         RamRectangleComponent pressedButton = (RamRectangleComponent) event.getTarget();
-        RamLinkedMenu linkedMenu = (RamLinkedMenu) pressedButton.getParentOfType(RamLinkedMenu.class);
+        RamLinkedMenu linkedMenu = pressedButton.getParentOfType(RamLinkedMenu.class);
         if (linkedMenu != null) {
 
             ParameterView parameterView = (ParameterView) linkedMenu.getLinkedView();

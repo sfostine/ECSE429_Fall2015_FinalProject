@@ -195,7 +195,7 @@ public class RamMenuAction extends RamButton {
             label.setWidthXYGlobal(getWidth());
         }
 
-        float labelX = (float) (positionRelatedToParent.x);
+        float labelX = (positionRelatedToParent.x);
         float labelY = (float) (positionRelatedToParent.y - 0.5 * label.getHeightXY(TransformSpace.GLOBAL));
 
         // If the label is out of the screen. Do this only if label is last.
@@ -227,7 +227,7 @@ public class RamMenuAction extends RamButton {
         if (scale && label.getWidth() > getWidth()) {
             label.setWidthXYGlobal(getWidth());
         }
-        float labelX = (float) (positionRelatedToParent.x);
+        float labelX = (positionRelatedToParent.x);
         float labelY =
                 (float) (positionRelatedToParent.y + getHeight() + 0.5 * label.getHeightXY(TransformSpace.GLOBAL));
 
