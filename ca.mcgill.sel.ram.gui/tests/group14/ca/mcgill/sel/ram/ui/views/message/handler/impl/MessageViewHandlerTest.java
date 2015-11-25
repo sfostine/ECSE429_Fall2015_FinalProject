@@ -30,6 +30,7 @@ import ca.mcgill.sel.commons.emf.util.EMFModelUtil;
 import ca.mcgill.sel.commons.emf.util.ResourceManager;
 import ca.mcgill.sel.core.LayoutElement;
 import ca.mcgill.sel.ram.Aspect;
+import ca.mcgill.sel.ram.FragmentContainer;
 import ca.mcgill.sel.ram.Lifeline;
 import ca.mcgill.sel.ram.Message;
 import ca.mcgill.sel.ram.MessageView;
@@ -262,20 +263,94 @@ public class MessageViewHandlerTest {
         waiter.await();
     }
     
+    //Reaches first ? statement
     @Test
     public void testProcessUnistrokeEvent5() throws TimeoutException {
-        aspect = (Aspect) ResourceManager.loadModel("models/concern2/aspect2.ram");
+        aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
+        setUpAspect();
+        
+        testInputCursor = new InputCursor();
+        MouseInputSource mouseInputSource = new MouseInputSource(RamApp.getApplication());
+        
+        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
+                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        mouseInputEvent1.onFired();
+        
+        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
+                0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        mouseInputEvent2.onFired();
+        
+        RamApp.getApplication().invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                id = MTGestureEvent.GESTURE_ENDED;
+                mtPolygon = new MTPolygon(RamApp.getApplication(), new Vertex[] {new Vertex()});
+                unistrokeEvent = new UnistrokeEvent(null, id, messageViewView, mtPolygon, null, testInputCursor);
+                messageViewHandler = (MessageViewHandler) MessageViewHandlerFactory.INSTANCE.getMessageViewHandler();
+                assertEquals(true, messageViewHandler.processUnistrokeEvent(unistrokeEvent));
+                assertEquals(messageViewView, unistrokeEvent.getTarget());
+                assertEquals(id, unistrokeEvent.getId());
+                waiter.resume();
+            }
+        });
+        
+        // Wait for UI to be updated.
+        waiter.await();
+    }
+    
+    @Test
+    public void testProcessUnistrokeEvent6() throws TimeoutException {
+        aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
         
         testInputCursor = new InputCursor();
         mouseInputSource = new MouseInputSource(RamApp.getApplication());
         
         mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 159, 336, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
+                0, 159, 220, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
         mouseInputEvent1.onFired();
         
         mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
-                0, 413, 336, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+                0, 413, 220, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        mouseInputEvent2.onFired();
+        
+        RamApp.getApplication().invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                id = MTGestureEvent.GESTURE_ENDED;
+                mtPolygon = new MTPolygon(RamApp.getApplication(), new Vertex[] {new Vertex()});
+                unistrokeEvent = new UnistrokeEvent(null, id, messageViewView, mtPolygon, null, testInputCursor);
+                messageViewHandler = (MessageViewHandler) MessageViewHandlerFactory.INSTANCE.getMessageViewHandler();
+                assertEquals(true, messageViewHandler.processUnistrokeEvent(unistrokeEvent));
+                assertEquals(messageViewView, unistrokeEvent.getTarget());
+                assertEquals(id, unistrokeEvent.getId());
+                waiter.resume();
+            }
+        });
+        
+        // Wait for UI to be updated.
+        waiter.await();
+    }
+    
+    //Reaches second ? statement
+    @Test
+    public void testProcessUnistrokeEvent7() throws TimeoutException {
+        aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
+        setUpAspect();
+        
+        testInputCursor = new InputCursor();
+        mouseInputSource = new MouseInputSource(RamApp.getApplication());
+        
+        mouseInputEvent1 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
+                0, 159, 180, MouseEvent.MOUSE_PRESSED, testInputCursor, MouseEvent.BUTTON1_MASK);
+        mouseInputEvent1.onFired();
+        
+        mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 
+                0, 500, 500, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
         //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 413, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
         //mouseInputEvent2 = new MTMouseInputEvt(mouseInputSource, messageViewView, 0, 160, 180, MouseEvent.MOUSE_DRAGGED, testInputCursor, MouseEvent.BUTTON1_MASK);
         mouseInputEvent2.onFired();
@@ -314,7 +389,7 @@ public class MessageViewHandlerTest {
                 LifelineView lifeLineViewTest = iterator.next();
                 
                 ContainerMapImpl layout = EMFModelUtil.getEntryFromMap(aspect.getLayout().getContainers(), messageView);
-                LayoutElement layoutElement = (LayoutElement) layout.getValue().get(lifelineTest);
+                //LayoutElement layoutElement = (LayoutElement) layout.getValue().get(lifelineTest);
                 
                 Vector3D location = new Vector3D(159, 180);
                 
