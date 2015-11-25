@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ram:Aspect xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ram="http://cs.mcgill.ca/sel/ram/3.0" xmi:id="_tag-AJFjEeWNG5v28JnEzQ" name="WithLifeLine">
+  <coreConcern href="TestConcern.core#_33M7cI2WEeWgK9wvOdMwzg"/>
+  <structuralView xmi:id="_tag-AZFjEeWNG5v28JnEzQ">
+    <classes xsi:type="ram:Class" xmi:id="_yvAWcJFjEeWNG5v28JnEzQ" name="A" visibility="public">
+      <operations xmi:id="_-e3P0JFjEeWNG5v28JnEzQ" name="create" visibility="public" returnType="_yvAWcJFjEeWNG5v28JnEzQ" operationType="Constructor"/>
+    </classes>
+    <types xsi:type="ram:RVoid" xmi:id="_tag-ApFjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RAny" xmi:id="_tag-A5FjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RBoolean" xmi:id="_tag-BJFjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RInt" xmi:id="_tag-BZFjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RChar" xmi:id="_tag-BpFjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RString" xmi:id="_tag-B5FjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RDouble" xmi:id="_tag-CJFjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RFloat" xmi:id="_tag-CZFjEeWNG5v28JnEzQ"/>
+    <types xsi:type="ram:RLong" xmi:id="_tag-CpFjEeWNG5v28JnEzQ"/>
+  </structuralView>
+  <layout xmi:id="_tag-C5FjEeWNG5v28JnEzQ">
+    <containers xmi:id="_tag-DJFjEeWNG5v28JnEzQ" key="_tag-AZFjEeWNG5v28JnEzQ">
+      <value xmi:id="_yvA9gJFjEeWNG5v28JnEzQ" key="_yvAWcJFjEeWNG5v28JnEzQ">
+        <value xmi:id="_yvA9gZFjEeWNG5v28JnEzQ" x="186.0" y="141.0"/>
+      </value>
+    </containers>
+  </layout>
+</ram:Aspect>
