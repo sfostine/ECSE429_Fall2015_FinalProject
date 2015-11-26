@@ -57,6 +57,7 @@ public class TestMessageViewHandler {
     private static MessageCallView messageCallView;
     private static MessageViewView messageViewView;
     private static MessageViewHandler messageViewHandler;
+    private static MessageHandler messageHandler;
     private static UnistrokeEvent unistrokeEvent;
     private static MTPolygon mtPolygon;
     private static InputCursor testInputCursor;
@@ -64,10 +65,7 @@ public class TestMessageViewHandler {
     private static MTMouseInputEvt mouseInputEvent1;
     private static MTMouseInputEvt mouseInputEvent2;
     private static int id;
-    private static Vector3D startPosition;
-    private static Vector3D endPosition;
-    private static LifelineView from;
-    private static LifelineView to;
+    private static TapAndHoldEvent tapAndHoldEvent;
     
 
     @BeforeClass
@@ -303,34 +301,38 @@ public class TestMessageViewHandler {
     
     @Test
     public void testHandleCreateFragment1() throws TimeoutException {
-        aspect = (Aspect) ResourceManager.loadModel("models/concern3/aspect3.ram");
+        aspect = (Aspect) ResourceManager.loadModel("models/concern1/aspect1.ram");
         setUpAspect();
+                
+        setUpMessageCallView();
+        
+        EList<Lifeline> list1 = messageViewView.getSpecification().getLifelines();
+        //First lifeline from the left in MessageView
+        Lifeline lifelineTest = list1.get(0);
+        
+        Collection<LifelineView> collection = messageViewView.getLifelineViews();
+        Iterator<LifelineView> iterator = collection.iterator();
+        LifelineView lifeLineViewTest = iterator.next();
+        
+        //ContainerMapImpl layout = EMFModelUtil.getEntryFromMap(aspect.getLayout().getContainers(), messageView);
+        //LayoutElement layoutElement = (LayoutElement) layout.getValue().get(lifelineTest);
+        
+        Vector3D location = new Vector3D(159, 180);
+        
+        FragmentContainer container = lifeLineViewTest.getFragmentContainerAt(location);
+                
+        tapAndHoldEvent = new TapAndHoldEvent(null, 0, messageCallView, null, true, location, 500, 500, 0);
+        //tapAndHoldEvent = new TapAndHoldEvent(null, 0, lifeLineViewTest, null, true, location, 500, 500, 0);
+        
+        messageHandler = new MessageHandler();
+        
+        messageViewHandler.handleCreateFragment(messageViewView, lifeLineViewTest, location, container);
+
         
         RamApp.getApplication().invokeLater(new Runnable() {
             @Override
             public void run() {
-                EList<Lifeline> list1 = messageViewView.getSpecification().getLifelines();
-                Lifeline lifelineTest = list1.get(0);
-                
-                Collection<LifelineView> collection = messageViewView.getLifelineViews();
-                Iterator<LifelineView> iterator = collection.iterator();
-                LifelineView lifeLineViewTest = iterator.next();
-                
-                ContainerMapImpl layout = EMFModelUtil.getEntryFromMap(aspect.getLayout().getContainers(), messageView);
-                //LayoutElement layoutElement = (LayoutElement) layout.getValue().get(lifelineTest);
-                
-                Vector3D location = new Vector3D(159, 180);
-                
-                message = messageView.getSpecification().getMessages().get(1);
-                messageCallView = new MessageCallView(message,
-                                new RamRectangleComponent(0, 0, 0, 0),
-                                new RamRectangleComponent(0, 0, 700, 700));
-                TapAndHoldEvent tapAndHoldEvent = new TapAndHoldEvent(null, 0, messageCallView, 
-                        null, true, location, 0, 0, 0);
-                
-                MessageHandler messageHandler = new MessageHandler();
-                
-                messageHandler.processTapAndHoldEvent(tapAndHoldEvent);
+
                 
                 //RamApp.getApplication().dispatchEvent(new MouseEvent(RamApp.getApplication(), MouseEvent.MOUSE_PRESSED, 0, MouseEvent.BUTTON1_MASK, 159, 180, 159, 180, 1, false, MouseEvent.BUTTON1));
                 //RamApp.getApplication().dispatchEvent(new MouseEvent(RamApp.getApplication(), MouseEvent.MOUSE_RELEASED, 0, MouseEvent.BUTTON1_MASK, 159, 180, 159, 180, 1, false, MouseEvent.BUTTON1));
@@ -338,7 +340,6 @@ public class TestMessageViewHandler {
                 //tapAndHold.onFired();
                 //RamApp.getApplication().dispatchEvent(new MouseEvent(RamApp.getApplication(), MouseEvent.MOUSE_PRESSED, 0, MouseEvent.BUTTON1_MASK, 400, 400, 400, 400, 1, false, MouseEvent.BUTTON1));
                 //RamApp.getApplication().dispatchEvent(new MouseEvent(RamApp.getApplication(), MouseEvent.MOUSE_RELEASED, 0, MouseEvent.BUTTON1_MASK, 159, 180, 159, 180, 1, false, MouseEvent.BUTTON1));
-                //FragmentContainer container = lifeLineViewTest.getFragmentContainerAt(location);
                 
                 //LifelineView lifelineView = new LifelineView(messageViewView, )
                 //layout.getValue().get(null);
@@ -353,7 +354,29 @@ public class TestMessageViewHandler {
         waiter.await();
     }
     
-    public void setUpAspect() throws TimeoutException {
+    private void setUpMessageCallView(){
+        
+        RamApp.getApplication().invokeLater(new Runnable() {
+            @Override
+            public void run()  {
+                message = messageView.getSpecification().getMessages().get(0);
+                messageCallView = new MessageCallView(message,
+                                new RamRectangleComponent(0, 0, 0, 0),
+                                new RamRectangleComponent(0, 0, 700, 700));
+                waiter.resume();
+            }
+        });
+        
+        try {
+            waiter.await();
+        } catch (TimeoutException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    
+    }
+    
+    private void setUpAspect() throws TimeoutException {
         RamApp.getApplication().addSceneChangeListener(new ISceneChangeListener() {
             @Override
             public void processSceneChangeEvent(SceneChangeEvent event) {
@@ -386,7 +409,7 @@ public class TestMessageViewHandler {
         waiter.await();
     }
     
-    public void setUpMouseInputs(int x1, int y1, int x2, int y2) {
+    private void setUpMouseInputs(int x1, int y1, int x2, int y2) {
         testInputCursor = new InputCursor();
         mouseInputSource = new MouseInputSource(RamApp.getApplication());
         
